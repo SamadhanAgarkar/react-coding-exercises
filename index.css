@@ -1,9 +1,37 @@
-#heading{
+#heading {
     color: red;
 }
-#child1{
+
+#child1 {
     background-color: red;
 }
-#child2{
+
+#child2 {
     background-color: yellow;
+}
+
+.logo {
+    height: 80px;
+    float: left;
+}
+.nav-item {
+    padding: 15px;
+    list-style: none;
+    float: inline-end;
+}
+.header{
+    border: 1px solid;
+    height: 80px;
+    background: #f7f7f7;
+}
+.card-img-top{
+    height: 200px;
+    width: 200px;
+}
+.cart-sec{
+    float: left;
+    background: #c1b2b2;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
 }
