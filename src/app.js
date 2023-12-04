@@ -1,30 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-const HeaderComponent = () => {
-    return (
-        <div>
-            <div className="header">
-                <div className="logo-container">
-                    <img className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY8EOQiw7gSHpsV1I8KOqwqn4qQXQiE1mg4qtJOFS-IkEmq8Q-QI5guRV2WZy7Z9iNsqs&usqp=CAU"></img>
-                </div>
-                <div className="d-flex" >
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            Contact
-                        </li>
-                        <li className="nav-item">
-                            About
-                        </li>
-                        <li className="nav-item">
-                            Home
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    )
-}
+import HeaderComponent from "./components/HeaderComponent"
+import BodyComponent from "./components/BodyComponent"
 
 const resList = [{
     id: "797048",
@@ -160,26 +137,12 @@ const CartComponent = (props) => {
     )
 }
 
-const Body = () => {
-    return (
-        <div>
-            <div className="search">Search</div>
-            <div className="cart-data">
-                {/* <CartComponent resData={resList[0]}/>
-            <CartComponent resData={resList[1]}/>
-            <CartComponent resData={resList[2]}/> */}
-                {resList.map((restaurant) => (
-                    <CartComponent resData={restaurant} key={restaurant.id}></CartComponent>
-                ))}
-            </div>
-        </div>
-    )
-}
+
 const AppLayout = () => {
     return (
         <div>
             <HeaderComponent />
-            <Body />
+            <BodyComponent />
         </div>
     )
 }
