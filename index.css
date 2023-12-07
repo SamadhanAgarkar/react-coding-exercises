@@ -29,9 +29,13 @@
     width: 200px;
 }
 .cart-sec{
-    float: left;
     background: #c1b2b2;
     margin: 5px;
     padding: 5px;
     width: 200px;
+    height: 350px;
+}
+.cart-data{
+    display: flex;
+    flex-wrap: wrap;
 }
