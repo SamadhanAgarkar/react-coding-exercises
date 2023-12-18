@@ -4,18 +4,30 @@ import { useState } from "react";
 
 const BodyComponent = () => {
   const [restaurantList, setRestaurantList] = useState(resList);
+  const [searchText, setsearchText] = useState("");
 
-  return (
+  return restaurantList.length === 0 ? (
+    <div>Loading...</div>
+  ) : (
     <div>
-      <div className="search">
+      <div className="sorting-sec">
+        <input
+          type="text"
+          value={searchText}
+          onChange={(e) => setsearchText(e.target.value)}
+        ></input>
         <button
           className="btn"
           onClick={() => {
-            setRestaurantList(resList);
+            const filterList = resList.filter((res) =>
+              res.data.name.toLowerCase().includes(searchText.toLowerCase())
+            );
+            setRestaurantList(filterList);
           }}
         >
-          Clear Filter
+          Search
         </button>
+
         <button
           className="btn"
           onClick={() => {
@@ -24,6 +36,15 @@ const BodyComponent = () => {
           }}
         >
           Filter on Rating
+        </button>
+
+        <button
+          className="btn"
+          onClick={() => {
+            setRestaurantList(resList);
+          }}
+        >
+          Clear Filter
         </button>
       </div>
       <div className="cart-data">
