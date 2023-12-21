@@ -1,10 +1,28 @@
 import CartComponent from "./CartComponent";
-import { resList } from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const BodyComponent = () => {
-  const [restaurantList, setRestaurantList] = useState(resList);
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
   const [searchText, setsearchText] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.675276800000006&lng=77.1588096&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const jsonData = await data.json();
+    const Resdata =
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setRestaurantList(Resdata);
+    setFilteredRestaurant(Resdata);
+    console.log(">>>>>>>", Resdata);
+  };
 
   return restaurantList.length === 0 ? (
     <div>Loading...</div>
@@ -19,10 +37,10 @@ const BodyComponent = () => {
         <button
           className="btn"
           onClick={() => {
-            const filterList = resList.filter((res) =>
-              res.data.name.toLowerCase().includes(searchText.toLowerCase())
+            const filteredRestaurant = restaurantList.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
-            setRestaurantList(filterList);
+            setFilteredRestaurant(filteredRestaurant);
           }}
         >
           Search
@@ -31,8 +49,10 @@ const BodyComponent = () => {
         <button
           className="btn"
           onClick={() => {
-            const filterList = resList.filter((res) => res.data.avgRating > 4);
-            setRestaurantList(filterList);
+            const filteredRestaurant = restaurantList.filter(
+              (res) => res.info.avgRating > 4
+            );
+            setFilteredRestaurant(filteredRestaurant);
           }}
         >
           Filter on Rating
@@ -41,18 +61,15 @@ const BodyComponent = () => {
         <button
           className="btn"
           onClick={() => {
-            setRestaurantList(resList);
+            setFilteredRestaurant(restaurantList);
           }}
         >
           Clear Filter
         </button>
       </div>
       <div className="cart-data">
-        {restaurantList.map((restaurant) => (
-          <CartComponent
-            key={restaurant.id}
-            resData={restaurant}
-          ></CartComponent>
+        {filteredRestaurant.map((restaurent) => (
+          <CartComponent key={restaurent.info.id} resData={restaurent} />
         ))}
       </div>
     </div>
