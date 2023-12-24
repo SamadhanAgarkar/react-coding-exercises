@@ -8,9 +8,11 @@ const ErrorComponent = () => {
       <p>
         {err.status}: {err.statusText}
       </p>
-      <h2>
-        <Link to="/">Back to Home</Link>
-      </h2>
+      <Link to="/">
+        <button className="px-2 py-1 bg-blue-500 rounded-lg text-white float-right">
+          Back to Home
+        </button>
+      </Link>
     </div>
   );
 };
