@@ -8,8 +8,8 @@ const CartComponent = (props) => {
 
   return (
     <div>
-      <div className="cart-sec">
-        <img className="card-img-top" src={RESTO_URL + cloudinaryImageId} />
+      <div className="w-50 bg-gray-100 min-h-72 m-2 p-4 rounded-lg">
+        <img className="w-full h-40" src={RESTO_URL + cloudinaryImageId} />
         <div className="card-body">
           <div className="rest-title">
             <b>{name}</b>

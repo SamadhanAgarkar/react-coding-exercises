@@ -28,46 +28,54 @@ const BodyComponent = () => {
     <div>Loading...</div>
   ) : (
     <div>
-      <div className="sorting-sec">
-        <input
-          type="text"
-          value={searchText}
-          onChange={(e) => setsearchText(e.target.value)}
-        ></input>
-        <button
-          className="btn"
-          onClick={() => {
-            const filteredRestaurant = restaurantList.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredRestaurant(filteredRestaurant);
-          }}
-        >
-          Search
-        </button>
-
-        <button
-          className="btn"
-          onClick={() => {
-            const filteredRestaurant = restaurantList.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setFilteredRestaurant(filteredRestaurant);
-          }}
-        >
-          Filter on Rating
-        </button>
-
-        <button
-          className="btn"
-          onClick={() => {
-            setFilteredRestaurant(restaurantList);
-          }}
-        >
-          Clear Filter
-        </button>
+      <div className="flex justify-end pt-24 m-1">
+        <div>
+          {" "}
+          <input
+            type="text"
+            value={searchText}
+            className="block rounded-md text-gray-900 border p-2"
+            onChange={(e) => setsearchText(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <button
+            className="p-2 bg-blue-500 ml-2 rounded-lg text-white"
+            onClick={() => {
+              const filteredRestaurant = restaurantList.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurant(filteredRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div>
+          <button
+            className="p-2 bg-blue-500 ml-2 rounded-lg text-white"
+            onClick={() => {
+              const filteredRestaurant = restaurantList.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setFilteredRestaurant(filteredRestaurant);
+            }}
+          >
+            Filter on Rating
+          </button>
+        </div>
+        <div>
+          <button
+            className="p-2 bg-blue-500 ml-2 rounded-lg text-white"
+            onClick={() => {
+              setFilteredRestaurant(restaurantList);
+            }}
+          >
+            Clear Filter
+          </button>
+        </div>
       </div>
-      <div className="cart-data">
+      <div className="flex justify-start p-1 flex-wrap">
         {filteredRestaurant.map((restaurent) => (
           <CartComponent key={restaurent.info.id} resData={restaurent} />
         ))}

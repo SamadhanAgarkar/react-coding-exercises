@@ -11,22 +11,27 @@ const HeaderComponent = () => {
 
   return (
     <div>
-      <div className="header">
+      <div className="flex justify-between shadow-md fixed w-full mb-10 bg-white top-0">
         <div className="logo-container">
-          <img className="logo" src={LOGO_URL}></img>
+          <img className="w-20" src={LOGO_URL}></img>
         </div>
-        <div className="d-flex">
-          <ul className="navbar-nav">
-            <li className="nav-item">
+        <div className="">
+          <ul className="flex item-center p-4 m-2">
+            <li className="px-4">
               <Link to="/">Home</Link>
             </li>
-            <li className="nav-item">
+            <li className="px-4">
               <Link to="/about">About</Link>
             </li>
-            <li className="nav-item">
+            <li className="px-4 ">
               <Link to="/contact">Contact</Link>
             </li>
-            <button onClick={userLoginLogout}>{userLogin}</button>
+            <button
+              onClick={userLoginLogout}
+              className="px-2 py-1 bg-blue-500 ml-2 rounded-lg text-white"
+            >
+              {userLogin}
+            </button>
             {/* <button
               onClick={() => {
                 userLogin === "Login"
