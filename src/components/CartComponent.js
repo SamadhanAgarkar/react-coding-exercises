@@ -8,7 +8,7 @@ const CartComponent = (props) => {
 
   return (
     <div>
-      <div className="w-60 bg-gray-100 min-h-72 m-2 p-4 rounded-lg">
+      <div className="w-60 bg-gray-100 min-h-72 m-2 p-4 rounded-lg hover:bg-gray-700 hover:text-white hover:shadow-2xl">
         <img
           className="w-full h-40 object-contain"
           src={RESTO_URL + cloudinaryImageId}
