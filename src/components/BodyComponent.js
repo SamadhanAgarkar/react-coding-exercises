@@ -19,16 +19,17 @@ const BodyComponent = () => {
     );
     const jsonData = await data.json();
     const Resdata =
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(Resdata);
     setFilteredRestaurant(Resdata);
-    console.log(">>>", filteredRestaurant);
+    console.log("filteredRestaurant>>>", restaurantList);
+    console.log("restaurantList >>>", filteredRestaurant);
   };
 
-  return restaurantList.length === 0 || filteredRestaurant.length === 0 ? (
-    <NoResultComponent />
-  ) : (
+  // return restaurantList.length === 0 || filteredRestaurant.length === 0 ? (
+  return Array.isArray([restaurantList]) ||
+    Array.isArray([filteredRestaurant]) ? (
     <div>
       <div className="flex justify-end m-1">
         <input
@@ -82,6 +83,9 @@ const BodyComponent = () => {
         ))}
       </div>
     </div>
+  ) : (
+    // return (
+    <NoResultComponent />
   );
 };
 
